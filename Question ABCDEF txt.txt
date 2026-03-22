@@ -1,0 +1,932 @@
+Queation A:
+
+Detective Chu
+Problem Description
+Detective Pikachu, also known as Chu, was kidnapped during an investigation. Blindfolded, Chu was taken deep into the enemy's hideout.
+
+During the journey, Chu was unconscious but woke up while still in transit. Although blindfolded, Chu used his sharp memory to track the vehicle's movements like every left turn (L), right turn (R), and straight movement (S).
+
+Chu knows the city map, which is a grid made up of open cells (.) and obstacles (#). The enemy's vehicle could only travel through open cells. For each "S" (straight), the vehicle moved forward to the next cell in its current direction. For "L" (left) or "R" (right), the vehicle only changed direction while staying in the same cell.
+
+Help Chu find all possible current locations based on the following information:
+
+The city grid where (0, 0) is at top left and (R -1, C-1) is at bottom right
+The movement sequence (a string of L, R, S)
+The assumption that the vehicle could have started from any open cell, facing any direction (up, down, left, or right)
+There is also a possibility that Chu was taken to a different city, in which case there will be no matches.
+Constraints
+3 <= R, C <= 50
+
+2 <= Length of movement sequence <= 25
+
+Input
+The first line contains two integers, R and C, representing the number of rows and columns in the map.
+
+The next R lines each contain C characters, either "." (open cell) or "#" (obstacle), representing the city map.
+
+The last line contains the movement sequence, consisting of characters from ["S", "R", "L"].
+
+Output
+Output a single integer: the total number of possible locations where Chu could be, if at least one match exists.
+
+If there are no possible locations, print "Impossible" (without quotes).
+
+Time Limit (secs)
+1
+
+Examples
+Example 1
+
+Input
+
+5 5
+
+.....
+
+.#.#.
+
+.....
+
+#.#.#
+
+.....
+
+SSRSLS
+
+Output
+
+4
+
+Explanation
+
+The four possible locations he could be at are as given below.
+
+(3, 1) assuming he started memorizing sequence at (0,2) cell going downwards.
+
+(3, 3) assuming he started memorizing sequence at (0,4) cell going downwards.
+
+(1, 2) assuming he started memorizing sequence at (4,1) cell going upwards.
+
+(1, 4) assuming he started memorizing sequence at (4,3) cell going upwards.
+
+And only four such places possible hence the output 4.
+
+Example 2
+
+Input
+
+5 5
+
+..#..
+
+..#.#
+
+.###.
+
+.....
+
+##...
+
+SSSSRSS
+
+Output
+
+1
+
+Explanation
+
+(1, 0) is the only possible location, assuming he started memorizing from (3,4) going leftwards. Hence the output 1.
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Question B:
+
+
+Mirror Math
+Problem Description
+
+Ravi, a curious schoolboy, enjoys playing with mirrors. One day, he discovered a seven-segment display and a mirror, which inspired him to invent a game called Mirror Math.
+
+In Mirror Math, Ravi experiments by placing a mirror on one of the four sides — left, right, top, or bottom — of each digit in a number displayed on a seven-segment display. He observes the reflection as seen from the bottom. If the reflection forms a valid digit, he keeps it; otherwise, he discards it. Sometimes, he skips the mirroring step and simply keeps the original digit.
+
+After processing all digits in this way, Ravi collects all valid digits and arranges them to form the smallest possible number.
+
+Given:
+
+An original number.
+A string indicating the mirror placement for each digit. Each character in the string corresponds to a digit and specifies the mirror's position:
+L: Mirror on the left side
+R: Mirror on the right side
+U: Mirror on the top side
+D: Mirror on the bottom side
+S: Skip mirroring; use the digit as-is
+Your task is to extract all valid digits after mirroring (or skipping), and then use them to form and print the smallest possible number.
+
+Constraints
+
+1 <= length of digits <= 1000
+
+The number and the mirror placement string will have the same length.
+
+A standard seven-segment display system is used for the numbers.
+
+The formed number should not contain leading zeros (except for the number 0 itself).
+
+Input
+
+The first line contains the original number chosen by Ravi.
+
+The second line contains a string of the same length, made up of the characters L, R, U, D, and S, indicating the mirror placement for each digit.
+
+Output
+
+Print a single integer: the smallest number that can be formed using all valid digits obtained from the mirroring process.
+
+Time Limit (secs)
+1
+
+Examples
+
+Example 1
+
+Input
+
+38149
+
+LRDSL
+
+Output
+
+148
+
+Explanation
+
+The given number when put the mirror on the respective sides will look like this -
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@6ae55678:image1.png
+
+Among these, the valid digits are - {8, 1, 4} and the minimum number that can be formed with these digits is 148. Hence, print the same.
+
+Example 2
+
+Input
+
+8735162
+
+DULSRUD
+
+Output
+
+1558
+
+Explanation
+
+The given number when put the mirror on the respective sides will look like this -
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@6ae55678:image2.png
+
+Among these, the valid digits are - {8, 5, 1, 5} and the minimum number that can be formed with these digits is 1558. Hence, print the same.
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+Question C
+
+Arrange Track
+Problem Description
+You have been assigned the task of laying railway tracks between two stations. Because the plan is too large for a single sheet, it is divided across several sheets.
+
+Your job is to connect two stations by laying down tracks. The plan is a square grid of size N x N, split into smaller square sheets of size M x M. Both the full plan and each sheet are always square.
+
+After drawing the track positions, you arranged the sheets to form the complete plan. However, the sheets got shuffled, and some were rotated. Even the sheets containing the source (S) and destination (D) stations might have changed orientation.
+
+For example, a 6 x 6 plan might look like this:
+
+LLLLLL
+
+LSTTTL
+
+LLLLTL
+
+LLLLTL
+
+LLLLDL
+
+LLLLLL
+
+Here, L represents Land, S and D represent stops between which the Track has to be laid, and T represents the Track.
+
+If divided into 3 x 3 sheets, the plan would be split as shown in the original document.
+LLL LLL LLL LTL
+
+LST TTL LLL LDL
+
+LLL LTL LLL LLL
+
+Since the map is unarranged, the entire plan may be reconstructed as follows:
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@22ee2d0:image1.png
+
+Your task is to rearrange the individual sheets to reconstruct the complete plan, ensuring a continuous track between S and D. The sheet containing S will always be placed in the top-left corner, and the sheet with D will always be in the bottom-right corner, in the same position as in the input. After rearranging, the distance between S and D should be the shortest possible.
+
+Important: The track cannot run over the edges of the individual sheets. Tracks are single-lane and do not have branches. Extra tracks may exist but are not part of the path between S and D.
+
+Hence, the following is not valid:
+LLL
+TLL
+TTL
+
+Rearrange the map and return the shortest distance along the track between S and D. D is included in the distance calculation.
+
+Constraints
+6 <= N <= 25
+
+3 <= M <= 5
+
+N/M will always be integer.
+
+Input
+The first line contains two space-separated integers representing N and M.
+The next N lines contain N space-separated characters, either L, T, S, or D, representing the misarranged plan.
+
+Output
+Print a single integer representing the shortest distance along the track between S and D (including the destination in the count)
+
+Time Limit (secs)
+1
+
+Examples
+Example 1
+
+Input
+
+6 3
+
+LLLLLL
+
+LSTLLL
+
+LLLLLL
+
+LLLLTL
+
+TTLLDL
+
+LTLLLL
+
+Output
+
+6
+
+Explanation
+
+The example is the same as the one explained in the description. The shortest distance between S and D after arrangement will be 6.
+
+Example 2
+
+Input
+
+6 3
+
+LLLLLL
+
+LSTLLL
+
+LLLLLL
+
+LLLLTL
+
+LTTLDL
+
+LTLLLL
+
+Output
+
+6
+
+Explanation
+
+From the input, the full plan is 6 x 6, and the individual sheet is 3 x 3. The individual sheets are:
+LLL LLL LLL LTL
+
+LST LLL LTT LDL
+
+LLL LLL LTL LLL
+
+Here, sheets are represented by their indices in order 1 to 4. The sheets containing S and D will be at (0,0) and (1,1) respectively. If sheet 2 is rotated and placed at (0,1), it won't connect to the D. Therefore, sheet 3 is rotated and placed at (0,1) to ensure that D in (1,1) is connected. The complete rearranged plan is:
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@22ee2d0:image2.png
+
+The shortest distance is 6. Hence, print the same.
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+Question D
+
+Treasure Hunt
+Problem Description
+Explorers have found a treasure grid high in the mountains. This grid is made up of stacked cells - some contain sparkling treasures, while others are blocked by heavy rocks. The rocks can be used for climbing above, but you cannot stand in the cell where rock is present.
+
+You begin your journey from a specific cell in the grid, aiming to collect as much treasure as possible. However, there are special rules you must follow:
+
+Gravity: You can only stand on a treasure cell if it is stable. A cell is stable if there is a rock directly beneath it. If you step onto an unstable treasure, you will slide down until you reach a stable cell or the bottom of the grid.
+Obstacles: Rocks (#) are obstacles. You cannot stand on them, but you can use them to climb upward into an available cell.
+Moves: You may move left or right to adjacent treasure cells, or climb upward, following the rules. Each move, slide, or climb counts toward your maximum step limit, K. Climbing onto rocks does not count as a move.
+The treasures you may find are:
+
++ -> Diamond
+$ -> Pearl
+% -> Gold
+* -> Platinum
+# -> Rock (obstacle)
+Each treasure has a value, which will be given in the input.
+
+Goal:
+Start from the source cell and reach a stable treasure cell within at most K steps. The last row is always stable (no gravity applies), but you cannot end your journey on a cell in the last row.
+
+Constraints
+
+1 <= N, M <= 20
+
+1 <= K <= 20
+
+The index of top left cell is (0,0) and the bottom right cell is (N-1, M-1).
+
+The starting cell is always stable.
+
+Input
+
+The first line contains two integers: N (number of rows) and M (number of columns).
+
+The next N lines describe the grid.
+
+The following line contains two integers: the x and y coordinates of the starting cell.
+
+The next line lists the values for pearl, platinum, gold, and diamond (in that order).
+
+The last line contains the integer K (maximum allowed steps).
+
+Output
+Print a single integer: the maximum value of treasures you can collect within K moves, ending on a stable cell.
+
+Time Limit (secs)
+
+1
+
+Examples
+
+Example 1
+
+Input
+
+5 5
+
+* $ * % *
+
+# * # # +
+
+* % $ * %
+
+# * # # +
+
+* $ * % *
+
+0 0
+
+1 2 3 4
+
+9
+
+Output
+
+21
+
+Explanation
+
+We start at the top-left cell (0,0) on Platinum, collecting 2 points. Moving right to (0,1) adds a Pearl worth 1 point, but since it is unstable, the path slides down through the column, picking up Platinum at (1,1) for 2 points, Gold at (2,1) for 3 points, and another Platinum at (3,1) for 2 points, finally stopping at (4,1) on Pearl for 1 point. From there, the path continues right to (4,2) for Platinum worth 2 points and further right to (4,3) for Gold worth 3 points. Climbing upward, it reaches (2,3) for Platinum worth 2 points and finally (0,3) for Gold worth 3 points. The total treasure collected along this route is 21 points. points. Adding all the treasures collected along this journey gives a maximum total of 21 points.
+
+Example 2
+
+Input
+
+6 3
+
+* % *
+
+# + $
+
+$ * +
+
+% # *
+
++ $ #
+
+# * %
+
+3 2
+
+5 9 4 1
+
+5
+
+Output
+
+9
+
+Explanation
+
+From the given cell, no moves to neighbouring stable cells are possible. The only treasure collected is the platinum at the starting location, worth 9 points.
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+Question E
+
+Box Game
+Problem Description
+
+Dev, a Rubik's Cube whiz who specializes in solving just one side, challenges his brother Ved with a tricky twist.
+
+The Challenge:
+
+Dev scrambles a Rubik's Cube and gives Ved a set of instructions to solve one specific face. But there is a catch! Dev might have secretly changed the colour of one cube unit, making the cube slightly faulty. To make things even harder, he also includes one extra, incorrect instruction in the list.
+
+Ved must now figure out:
+
+Is the cube faulty? Did Dev change a cube's colour?
+Identify the wrong instruction. Which step in the instructions will lead to failure if followed?
+Can you help Ved solve this Rubik's Cube puzzle with a twist?
+
+The Rubik Cube schematics are described below
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@38cedb7d:image1.jpegcom.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@38cedb7d:image2.png com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@38cedb7d:image3.jpeg
+
+Faces of the cubes are described according to the numbers.
+
+1 - base, 2 - back, 3 - top, 4 - front, 5 - left, 6 - right.
+
+Rules:
+
+1. 'turn left' - front goes to left, left goes to back, back goes to right, right goes to front, top side will be rotated right, whereas base side will be rotated left.
+
+2. 'turn right' - front goes to right, right goes to back, back goes to left, left goes to front, top side will be rotated left, whereas base side will be rotated right.
+
+3. 'rotate front' - front goes to base, base goes to back, back goes to top, top goes to front, left side will be rotated right, whereas right side will be rotated left.
+
+4. 'rotate back' - front goes to top, top goes to back, back goes to base, base goes to front, left side will be rotated left, whereas right side will be rotated right.
+
+5. 'rotate left' - top goes to left, left goes to base, base goes to right, right goes to top, front side will be rotated left, whereas back side will be rotated right.
+
+6. 'rotate right' - top goes to right, right goes to base, base goes to left, left goes to top, front side will be rotated right, whereas back side will be rotated left.
+
+7. '<side> <row/col> <direction>' - this will turn the row/column (1-indexed) of the side '<side>' in the given direction '<direction>'. E.g. If the instruction is 'top 1 left', this states that the 1st row of the top side will be turned towards left. If the instruction is 'top 1 down', this states that the 1st column of the top side will be turned downwards. (The direction is specified by imagining the specific side in the front of the eye level, then the row/column is turned).
+
+You are given the initial faces of the cube (visualize it being placed in front at eye level), and the instructions that Dev had given to Ved (instructions comprises of the rules described above). The faces may have multiple colours defined by various alphabets.
+
+Note: There is no guarantee that the colour which is faulty will be the one which will be completed after executing the instructions.
+
+Constraints
+
+3 <= N <= 15
+
+2 <= K <= 101
+
+Colours on each side of the box consists of upper-case English alphabets only.
+
+Input
+
+First line consists of 2 space separated integers - N & K (where 'N' is the number of rows and columns on each side of the face and 'K' is the number of instructions Dev provided to Ved)
+
+Next 6*N lines, each N lines describes each face of the cube in the order described above with each line consisting of N space separated characters.
+
+Next 'K' lines describe the instructions the cube will perform.
+
+Line 1: N K Two space-separated integers:
+N: The number of rows and columns on each side of the Rubik's Cube face.
+K: The number of instructions Dev provides to Ved.
+Next 6N lines: Each of these lines represents a face of the cube, described as follows:
+Line Format: N space-separated characters (representing the colours on that face).
+Order: The faces are described in this order: Base, Back, Top, Front, Left, Right.
+Last K lines: Each line describes an instruction Dev gives Ved, where each instruction might involve rotating a specific face's column/row (e.g., "right 2 up" means rotate the 2nd column of right face upwards).
+Output
+
+"Faulty" (If and only if the cube is faulty, without quotes)
+
+<extra_instruction>
+
+OR
+
+"Not Possible" (If after executing instructions, the side of the cube is unsolved, without quotes)
+
+Time Limit (secs)
+1
+
+Examples
+
+Example 1
+
+Input
+
+3 4
+
+W R G
+
+G R B
+
+W R B
+
+Y Y W
+
+W G R
+
+R B R
+
+O G O
+
+O O O
+
+O O O
+
+G W G
+
+Y B W
+
+R Y R
+
+B B Y
+
+G W B
+
+G W B
+
+W Y B
+
+G Y R
+
+Y O Y
+
+back 2 down
+
+front 3 right
+
+front 1 up
+
+back 2 up
+
+Output
+
+front 1 up
+
+Explanation
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@38cedb7d:image4.png
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@38cedb7d:image5.png
+
+The required rotations of the cube to solve one side are described in the pictures above. The third instruction (front 1 up) is the extra instruction which leads one side of the cube unsolved. Also, the cube is not faulty, therefore, the answer is: "front 1 up"
+
+Example 2
+
+Input
+
+3 6
+
+W O O
+
+G W G
+
+R R B
+
+G O R
+
+B R W
+
+O W G
+
+Y W W
+
+Y Y W
+
+Y Y O
+
+R R Y
+
+B O Y
+
+R G Y
+
+G G B
+
+B G R
+
+W R B
+
+G G O
+
+B B O
+
+B O W
+
+front 3 up
+
+turn left
+
+front 3 down
+
+top 2 down
+
+left 2 right
+
+top 3 up
+
+Output
+
+Faulty
+
+top 2 down
+
+Explanation
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@38cedb7d:image6.png
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@38cedb7d:image7.png
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@38cedb7d:image8.png
+
+From the images above, one unit of 'Y' color is manipulated with one unit of 'G' color. After correcting the manipulation and executing the instructions, we can say that the instruction 'top 2 down' is an extra instruction causing one side of the cube being unsolved. Therefore, the answer is:
+
+Faulty
+
+top 2 down
+
+Example 3
+
+Input
+
+3 2
+
+O O Y
+
+G G R
+
+R B Y
+
+W Y B
+
+B Y W
+
+B W G
+
+W B R
+
+G B R
+
+G G W
+
+R R O
+
+G W O
+
+B Y O
+
+O O Y
+
+O O Y
+
+W W Y
+
+G W B
+
+B R R
+
+G Y R
+
+base 1 right
+
+top 2 left
+
+Output
+
+Not Possible
+
+Explanation
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@38cedb7d:image9.png
+
+It can be analyzed the cube is not faulty and executing any of the instructions does not lead to solve one of the sides. Therefore, the answer is: "Not Possible"
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+Question F
+
+Stellar Journey
+Problem Description
+
+Imagine a world filled with stars, where your movement depends entirely on them — you can only travel from one star to another.
+
+In this world, each star is made up of line segments that are either horizontal, vertical, or strictly diagonal. The point where two or more segments intersect is called the center of the star.
+
+You are given:
+
+The line segments which forms the stars
+A starting point,
+And a destination point.
+Your challenge is to find the minimum number of stars you must use to reach your destination, following the movement rules below.
+
+Movement and Rotation Rules:
+
+Think of directions as:
+
+North (N), South (S), East (E), West (W), Northeast (NE), Northwest (NW), Southeast (SE), Southwest (SW).
+
+Consider the below figure as a star.
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@649573d0:image1.png
+
+You can rotate stars any number of times to create temporary paths for your journey.
+
+Directions are defined as: North (N), South (S), East (E), West (W), Northeast (NE), Northwest (NW), Southeast (SE), and Southwest (SW).
+
+When a star is rotated clockwise:
+
+
+N -> E
+
+E -> S
+
+S -> W
+
+W -> N
+
+NW -> NE
+
+NE -> SE
+
+SE -> SW
+
+SW -> NW
+
+Rotating counterclockwise reverses these shifts.
+
+Constraints
+
+1 < Number of stars in the input < 20
+
+1 < Number of line segments (N) < 100
+
+Stars are confined to a maximum size of 100×100.
+
+Rotated stars may connect to or touch multiple other stars.
+
+Input
+
+First line consists of an integer denoting the number of lines segments which forms the stars.
+
+The next N lines each have four space-separated integers: x1 y1 x2 y2, representing the start and end coordinates of a segment.
+
+The second-to-last line gives the coordinates of the source point.
+
+Last line consist of two space separated integers denoting the x and y coordinates of the destination point.
+
+Output
+
+Print a single integer: the minimum number of stars required to travel from the source to the destination. If it's not possible to reach the destination, print "Impossible".
+
+Note: Count both the starting and ending stars.
+
+Time Limit (secs)
+1
+
+Examples
+
+Example 1
+
+Input
+
+8
+
+1 1 3 3
+
+2 1 2 4
+
+1 3 3 1
+
+4 2 10 8
+
+5 5 7 3
+
+1 5 1 8
+
+1 8 2 7
+
+1 8 2 9
+
+2 3
+
+2 9
+
+Output
+
+3
+
+Explanation
+
+The lines provided in the input represent stars as illustrated below.
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@649573d0:image2.gif
+
+As shown in the animation above, there are a total of 3 stars. The starting point is at (2, 3), and the goal is to reach the destination at (2, 9).
+
+Rotate the star at centre (6,4) to establish a connection to the star at (2,2). Once connected, switch to the star at (6, 4), and from there rotate again to connect to star at (1, 8), finally reach the destination.
+
+The number of stars used in this process is 3, hence print 3.
+
+Example 2
+
+Input
+
+10
+
+3 8 5 10
+
+3 12 5 10
+
+5 8 5 15
+
+5 3 5 5
+
+4 4 6 4
+
+6 5 10 9
+
+6 7 9 7
+
+8 3 8 9
+
+4 5 2 7
+
+2 5 4 7
+
+8 11
+
+5 14
+
+Output
+
+2
+
+Explanation
+
+The lines provided in the input represent stars as illustrated below.
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@649573d0:image3.gif
+
+As shown in the animation above, there are a total of 4 stars. The starting point is at (8, 11), and the goal is to reach the destination at (5, 14).
+
+To do this, you can rotate the star centered at (8, 7) so that it connects to the star at (5, 10). Once connected, switch to the star at (5, 10), and from there, reach the destination.
+
+The number of stars used in this process is 2, hence print 2.
+
+Example 3
+
+Input
+
+10
+
+3 8 5 10
+
+3 12 5 10
+
+5 8 5 15
+
+5 3 5 5
+
+4 4 6 4
+
+6 5 10 9
+
+6 7 9 7
+
+8 3 8 9
+
+4 5 2 7
+
+2 5 4 7
+
+8 11
+
+3 4
+
+Output
+
+Impossible
+
+Explanation
+
+The lines provided in the input represent stars as illustrated below.
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@649573d0:image4.png
+
+This is same as example 2, but the destination is different. The destination is unreachable, even after rotating all stars in every possible way.
